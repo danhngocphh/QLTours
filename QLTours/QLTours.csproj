@@ -312,11 +312,6 @@
     <Content Include="Views\tours\Details.cshtml" />
     <Content Include="Views\tours\Edit.cshtml" />
     <Content Include="Views\tours\Index.cshtml" />
-    <Content Include="Views\chitietTours\Create.cshtml" />
-    <Content Include="Views\chitietTours\Delete.cshtml" />
-    <Content Include="Views\chitietTours\Details.cshtml" />
-    <Content Include="Views\chitietTours\Edit.cshtml" />
-    <Content Include="Views\chitietTours\Index.cshtml" />
     <Content Include="Views\diadiems\Create.cshtml" />
     <Content Include="Views\diadiems\Delete.cshtml" />
     <Content Include="Views\diadiems\Details.cshtml" />
@@ -362,6 +357,11 @@
     <Content Include="Views\nguoidis\Details.cshtml" />
     <Content Include="Views\nguoidis\Edit.cshtml" />
     <Content Include="Views\nguoidis\Index.cshtml" />
+    <Content Include="Views\chitietTours\Create.cshtml" />
+    <Content Include="Views\chitietTours\Delete.cshtml" />
+    <Content Include="Views\chitietTours\Details.cshtml" />
+    <Content Include="Views\chitietTours\Edit.cshtml" />
+    <Content Include="Views\chitietTours\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

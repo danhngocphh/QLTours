@@ -7,30 +7,24 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create",new {thanhpho = "Đà lạt",idtour = 1 })
 </p>
 <table class="table">
     <tr>
         <th>
-            STT
+            @Html.DisplayNameFor(model => model.diadiem.ThanhPho)
         </th>
         <th>
-            Thành phố
+            @Html.DisplayNameFor(model => model.tour.Ten)
         </th>
         <th>
-            Tên chi tiết tour
-        </th>
-        <th>
-            Số thứ tự địa điểm
+            @Html.DisplayNameFor(model => model.STTDiaDiem)
         </th>
         <th></th>
     </tr>
-@{ int counter = 0;}
+
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @(++counter)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.diadiem.ThanhPho)
         </td>

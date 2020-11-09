@@ -37,16 +37,23 @@ namespace QLTours.Controllers
         }
 
         // GET: chitietTours/Create
-        public ActionResult Create(int id)
+        public ActionResult Create(string thanhpho,int idtour)
         {
-            diadiem dd = db.diadiems.Select(s=>s);
-            ViewBag.ThanhPho = new SelectList(db.diadiems.GroupBy(d=>new {d.ThanhPho}).Select(group=>new { group.Key.ThanhPho }), "ThanhPho","ThanhPho",dd.ThanhPho);
-            ViewBag.IdDiaDiem = new SelectList(db.diadiems.Where(d => d.ThanhPho.Contains(dd.ThanhPho)), "Id", "Ten");
+            var ThanhPho = db.diadiems.GroupBy(d=>new { d.ThanhPho }).Select(g=>new { g.Key.ThanhPho });
+            ViewBag.ThanhPho = new SelectList(ThanhPho, "ThanhPho", "ThanhPho");
+            var diadiem = db.diadiems.Where(dd=>dd.ThanhPho.Contains(thanhpho));
+            ViewBag.IdDiaDiem = new SelectList(diadiem, "Id", "Ten");
 
+            var Tour = db.tours.Select(t => new { t.Id, t.Ten });
+            ViewBag.IdTour = new SelectList(Tour, "Id", "Ten");
 
-            var tour = db.tours.Find(id);
-            ViewBag.TourId = id;
-            ViewBag.TourTen = tour.Ten;
+            var chitiettour = db.chitietTours.Join(db.diadiems,
+                                                    ct=>ct.IdDiaDiem,
+                                                    dds=>dds.Id,
+                                                    (ct,dds)=>new {TenDiaDiem = dds.Ten,STT = ct.STTDiaDiem, ct.IdTour })
+                                                    .Where(j=>j.IdTour==idtour);
+            ViewBag.chitiettour = new SelectList(chitiettour,"STT","TenDiaDiem");
+
             return View();
         }
 
@@ -63,15 +70,23 @@ namespace QLTours.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            string thanhpho = Request.QueryString["thanhpho"];
+            var ThanhPho = db.diadiems.GroupBy(d => new { d.ThanhPho }).Select(g => new { g.Key.ThanhPho });
+            ViewBag.ThanhPho = new SelectList(ThanhPho, "ThanhPho", "ThanhPho");
+            var diadiem = db.diadiems.Where(dd => dd.ThanhPho.Contains(thanhpho));
+            ViewBag.IdDiaDiem = new SelectList(diadiem, "Id", "Ten",chitietTour.IdDiaDiem);
 
-            diadiem dd = new diadiem();
-            ViewBag.ThanhPho = new SelectList(db.diadiems.GroupBy(d => new { d.ThanhPho }).Select(group => new { group.Key.ThanhPho }), "ThanhPho", "ThanhPho", dd.ThanhPho);
-            ViewBag.IdDiaDiem = new SelectList(db.diadiems.Where(d => d.ThanhPho.Contains(dd.ThanhPho.ToString())), "Id", "Ten");
+            var Tour = db.tours.Select(t => new { t.Id, t.Ten });
+            ViewBag.IdTour = new SelectList(Tour, "Id", "Ten",chitietTour.IdTour);
 
-            int id = Convert.ToInt32(Request.QueryString["id"]);
-            var tour = db.tours.Find(id);
-            ViewBag.TourId = id;
-            ViewBag.TourTen = tour.Ten;
+            int idtour = Convert.ToInt32(Request.QueryString["idtour"]);
+            var chitiettour = db.chitietTours.Join(db.diadiems,
+                                                    ct => ct.IdDiaDiem,
+                                                    dds => dds.Id,
+                                                    (ct, dds) => new { TenDiaDiem = dds.Ten, STT = ct.STTDiaDiem, ct.IdTour })
+                                                    .Where(j => j.IdTour == idtour);
+            ViewBag.chitiettour = new SelectList(chitiettour, "STT", "TenDiaDiem");
+
             return View(chitietTour);
         }
 
