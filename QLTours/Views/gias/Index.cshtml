@@ -1,0 +1,57 @@
+﻿@model IEnumerable<QLTours.Models.gia>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            STT
+        </th>
+        <th>
+            Tên giá
+        </th>
+        <th>
+            Số tiền (Đồng)
+        </th>
+        <th>
+            Từ ngày
+        </th>
+        <th>
+            Đến ngày
+        </th>
+        <th></th>
+    </tr>
+@{ int counter = 0;}
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @(++counter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tour.Ten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoTien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TuNgay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DenNgay)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
