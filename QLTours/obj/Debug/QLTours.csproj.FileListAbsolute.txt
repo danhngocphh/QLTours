@@ -103,3 +103,7 @@ C:\Users\tieud\source\repos\QLTours\QLTours\obj\Debug\QLTours.csproj.CoreCompile
 C:\Users\tieud\source\repos\QLTours\QLTours\obj\Debug\QLTours.csproj.CopyComplete
 C:\Users\tieud\source\repos\QLTours\QLTours\obj\Debug\QLTours.dll
 C:\Users\tieud\source\repos\QLTours\QLTours\obj\Debug\QLTours.pdb
+C:\Users\PC\Documents\GitHub\QLTours\QLTours\obj\Debug\QLTours.csprojAssemblyReference.cache
+C:\Users\PC\Documents\GitHub\QLTours\QLTours\obj\Debug\QLTours.csproj.CoreCompileInputs.cache
+C:\Users\PC\Documents\GitHub\QLTours\QLTours\obj\Debug\QLTours.dll
+C:\Users\PC\Documents\GitHub\QLTours\QLTours\obj\Debug\QLTours.pdb
