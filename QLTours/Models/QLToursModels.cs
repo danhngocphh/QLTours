@@ -113,6 +113,8 @@ namespace QLTours.Models
                 .HasForeignKey(e => e.IdTour)
                 .WillCascadeOnDelete(false);
 
+
+
             modelBuilder.Entity<tour>()
                 .HasMany(e => e.gias)
                 .WithRequired(e => e.tour)

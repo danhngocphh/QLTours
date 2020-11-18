@@ -182,6 +182,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\nguoidisController.cs" />
     <Compile Include="Controllers\nhanviensController.cs" />
+    <Compile Include="Controllers\thongkesController.cs" />
     <Compile Include="Controllers\toursController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -202,6 +203,7 @@
     <Compile Include="Models\loai.cs" />
     <Compile Include="Models\loaichiphi.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ShiftsModel.cs" />
     <Compile Include="Models\nguoidi.cs" />
     <Compile Include="Models\QLToursModels.cs" />
     <Compile Include="Models\tour.cs" />
@@ -362,6 +364,13 @@
     <Content Include="Views\nguoidis\Details.cshtml" />
     <Content Include="Views\nguoidis\Edit.cshtml" />
     <Content Include="Views\nguoidis\Index.cshtml" />
+    <Content Include="Views\thongkes\Create.cshtml">
+      <BrowseToURL>~/thongkes/Create</BrowseToURL>
+    </Content>
+    <Content Include="Views\thongkes\Delete.cshtml" />
+    <Content Include="Views\thongkes\Details.cshtml" />
+    <Content Include="Views\thongkes\Edit.cshtml" />
+    <Content Include="Views\thongkes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

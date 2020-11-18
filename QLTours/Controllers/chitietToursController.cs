@@ -39,9 +39,9 @@ namespace QLTours.Controllers
         // GET: chitietTours/Create
         public ActionResult Create(int id)
         {
-            diadiem dd = db.diadiems.Select(s=>s);
-            ViewBag.ThanhPho = new SelectList(db.diadiems.GroupBy(d=>new {d.ThanhPho}).Select(group=>new { group.Key.ThanhPho }), "ThanhPho","ThanhPho",dd.ThanhPho);
-            ViewBag.IdDiaDiem = new SelectList(db.diadiems.Where(d => d.ThanhPho.Contains(dd.ThanhPho)), "Id", "Ten");
+            string thanhpho = "";
+            ViewBag.ThanhPho = new SelectList(db.diadiems.GroupBy(d=>new {d.ThanhPho}).Select(group=>new { group.Key.ThanhPho }), "ThanhPho","ThanhPho",thanhpho);
+            ViewBag.IdDiaDiem = new SelectList(db.diadiems.Where(d => d.ThanhPho.Contains(thanhpho)), "Id", "Ten");
 
 
             var tour = db.tours.Find(id);

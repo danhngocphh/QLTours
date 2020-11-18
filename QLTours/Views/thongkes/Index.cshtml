@@ -1,0 +1,96 @@
+﻿
+
+
+
+@{
+    ViewBag.Title = "Thống kê doanh thu đoàn";
+}
+
+
+<h2>Thống kê doanh thu đoàn</h2>
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>
+            STT
+        </th>
+        <th>
+            Đoàn đi
+        </th>
+        <th>
+            Số khách
+        </th>
+        <th>
+            Giá tour
+        </th>
+        <th>
+            Doanh thu
+        </th>
+        <th>
+            Tổng chi phí
+        </th>
+        <th>
+            Lãi
+        </th>
+    </tr>
+
+    @{int counter = 0; }
+    @{ double tongdoanhthu = 0;
+        double tongchiphi = 0;
+        double tonglai = 0;}
+    @foreach (var shift in ((List<QLTours.Controllers.thongkesController.ShiftsModel>)ViewBag.shifts))
+    {
+        {
+            tongdoanhthu +=  shift.Total;
+            tongchiphi +=  shift.Doanhthu;
+            tonglai +=  shift.Lai;
+
+        }
+    <tr>
+        <td>
+            @(++counter)
+        </td>
+        <td>
+            @shift.TenDoan
+        </td>
+        <td>
+            @shift.DSnguoidi
+        </td>
+        <td>
+            @shift.GiaTour
+        </td>
+        <td>
+            @shift.Total
+        </td>
+        <td>
+            @shift.Doanhthu
+        </td>
+        <td>
+            @shift.Lai
+        </td>
+    </tr>
+
+
+
+
+
+
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    Tổng
+                </td>
+                <th>
+                    @(tongdoanhthu)
+                </th>
+                <th>
+                    @(tongchiphi)
+                </th>
+                <th>
+                    @(tonglai)
+                </th>
+            </tr>
+
+        </table>
